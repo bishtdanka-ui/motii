@@ -1,0 +1,169 @@
+# motii
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Special Person ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fbc2eb);
+}
+
+.card{
+    width:420px;
+    background:rgba(255,255,255,.2);
+    backdrop-filter:blur(15px);
+    border-radius:25px;
+    padding:35px;
+    text-align:center;
+    color:white;
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+    animation:fadeIn 2s;
+}
+
+h1{
+    font-size:36px;
+    margin-bottom:15px;
+}
+
+h2{
+    font-size:30px;
+    color:#fff;
+    margin-bottom:20px;
+}
+
+.message{
+    font-size:20px;
+    line-height:1.8;
+    margin-bottom:25px;
+}
+
+.bouquet{
+    font-size:55px;
+    margin:20px 0;
+    animation:float 3s infinite;
+}
+
+button{
+    border:none;
+    background:#ff4d6d;
+    color:white;
+    padding:14px 30px;
+    border-radius:30px;
+    font-size:18px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    transform:scale(1.08);
+    background:#ff1744;
+}
+
+#love{
+    display:none;
+    margin-top:25px;
+    font-size:24px;
+    animation:fadeIn 2s;
+}
+
+.flower{
+    position:absolute;
+    top:-50px;
+    font-size:28px;
+    animation:fall linear infinite;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-12px);}
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes fall{
+    from{
+        transform:translateY(-10vh) rotate(0deg);
+    }
+    to{
+        transform:translateY(110vh) rotate(360deg);
+    }
+}
+</style>
+
+</head>
+<body>
+
+<div class="card">
+
+<h1>🌸 Dear Motii 🌸</h1>
+
+<div class="bouquet">
+💐🌹🌸🌷🌺
+</div>
+
+<div class="message">
+You are my <b>special person</b>. ❤️<br><br>
+
+You matter so much in my life.<br>
+Your smile makes my day brighter, and your presence makes everything feel better.<br><br>
+
+Thank you for being you, Motii. 🌹
+</div>
+
+<button onclick="showLove()">
+Open My Heart ❤️
+</button>
+
+<div id="love">
+💖 You will always have a special place in my heart. 💖
+<br><br>
+🌹 I appreciate you more than words can express. 🌹
+</div>
+
+</div>
+
+<script>
+function showLove(){
+    document.getElementById("love").style.display="block";
+}
+
+// Floating flowers
+const flowers=["🌸","🌹","🌺","🌷","💮"];
+
+for(let i=0;i<30;i++){
+    let flower=document.createElement("div");
+    flower.className="flower";
+    flower.innerHTML=flowers[Math.floor(Math.random()*flowers.length)];
+    flower.style.left=Math.random()*100+"vw";
+    flower.style.animationDuration=(5+Math.random()*5)+"s";
+    flower.style.animationDelay=Math.random()*5+"s";
+    document.body.appendChild(flower);
+}
+</script>
+
+</body>
+</html>
