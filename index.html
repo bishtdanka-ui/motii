@@ -1,169 +1,474 @@
-# motii
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Special Person ❤️</title>
-
+<title>Shyonix Elevator — Installation &amp; Fitting</title>
+<meta name="description" content="Certified elevator installation and fitting for residential and commercial buildings.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-}
+  :root{
+    --ink:#10202E;
+    --graphite:#132A3D;
+    --steel:#55636D;
+    --steel-light:#8D98A1;
+    --paper:#F6F7F8;
+    --paper-dim:#EBEDEF;
+    --amber:#A9824F;
+    --blue-steel:#2E5372;
+    --line:#D9DDE0;
+    --radius:3px;
+    --display:'Space Grotesk', sans-serif;
+    --body:'Source Sans 3', sans-serif;
+    --mono:'JetBrains Mono', monospace;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit; text-decoration:none;}
+  img,svg{display:block; max-width:100%;}
+  .wrap{max-width:1160px; margin:0 auto; padding:0 32px;}
+  @media(max-width:640px){.wrap{padding:0 20px;}}
 
-body{
-    height:100vh;
-    overflow:hidden;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fbc2eb);
-}
+  h1,h2,h3{font-family:var(--display); font-weight:600; letter-spacing:-0.01em; line-height:1.08;}
+  .eyebrow{
+    font-family:var(--mono); font-size:12px; letter-spacing:0.18em; text-transform:uppercase;
+    color:var(--blue-steel); display:flex; align-items:center; gap:10px; margin-bottom:14px;
+  }
+  .eyebrow::before{content:''; width:22px; height:1px; background:var(--amber);}
 
-.card{
-    width:420px;
-    background:rgba(255,255,255,.2);
-    backdrop-filter:blur(15px);
-    border-radius:25px;
-    padding:35px;
-    text-align:center;
-    color:white;
-    box-shadow:0 10px 30px rgba(0,0,0,.25);
-    animation:fadeIn 2s;
-}
+  /* ===== Focus visibility ===== */
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
+    outline:2px solid var(--amber); outline-offset:3px;
+  }
 
-h1{
-    font-size:36px;
-    margin-bottom:15px;
-}
+  /* ===== Header ===== */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(238,241,242,0.92); backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-row{display:flex; align-items:center; justify-content:space-between; height:76px;}
+  .brand{display:flex; align-items:center; gap:12px;}
+  .brand-mark{width:34px; height:34px; flex-shrink:0;}
+  .brand-name{font-family:var(--display); font-weight:700; font-size:22px; letter-spacing:0.02em;}
+  .brand-name span{color:var(--blue-steel);}
+  nav.links{display:flex; gap:32px; font-size:14px; font-weight:500;}
+  nav.links a{position:relative; padding:4px 0;}
+  nav.links a::after{content:''; position:absolute; left:0; bottom:0; width:0; height:2px; background:var(--amber); transition:width .25s ease;}
+  nav.links a:hover::after, nav.links a.active::after{width:100%;}
+  .header-actions{display:flex; align-items:center; gap:18px;}
+  .phone-link{font-family:var(--mono); font-size:14px; font-weight:500; display:none;}
+  .btn{
+    font-family:var(--body); font-weight:600; font-size:13px; letter-spacing:0.03em; text-transform:uppercase;
+    padding:12px 22px; border-radius:var(--radius); border:1px solid transparent; cursor:pointer;
+    display:inline-flex; align-items:center; gap:8px; transition:transform .15s ease, background .2s ease;
+  }
+  .btn-primary{background:var(--ink); color:var(--paper);}
+  .btn-primary:hover{background:var(--blue-steel); transform:translateY(-1px);}
+  .btn-amber{background:var(--amber); color:var(--ink);}
+  .btn-amber:hover{transform:translateY(-1px); filter:brightness(1.04);}
+  .btn-outline{border-color:var(--ink); background:transparent; color:var(--ink);}
+  .btn-outline:hover{background:var(--ink); color:var(--paper);}
+  @media(min-width:860px){.phone-link{display:inline-flex;}}
+  @media(max-width:860px){nav.links{display:none;}}
 
-h2{
-    font-size:30px;
-    color:#fff;
-    margin-bottom:20px;
-}
+  /* ===== Floor indicator rail (signature element) ===== */
+  #rail{
+    position:fixed; right:18px; top:50%; transform:translateY(-50%);
+    z-index:60; display:none; flex-direction:column; align-items:flex-end; gap:0;
+    font-family:var(--mono); font-size:11px; letter-spacing:0.05em;
+  }
+  @media(min-width:980px){#rail{display:flex;}}
+  .rail-track{position:relative; padding-left:0; display:flex; flex-direction:column; align-items:flex-end;}
+  .rail-line{position:absolute; right:5px; top:6px; bottom:6px; width:1px; background:var(--line);}
+  .rail-stop{display:flex; align-items:center; gap:10px; padding:9px 0; cursor:pointer; color:var(--steel-light); transition:color .2s ease;}
+  .rail-stop .rail-label{opacity:0; transform:translateX(6px); transition:opacity .2s ease, transform .2s ease; white-space:nowrap; background:var(--paper); padding:2px 6px; border:1px solid var(--line);}
+  .rail-stop:hover .rail-label, .rail-stop.active .rail-label{opacity:1; transform:translateX(0);}
+  .rail-stop .rail-dot{width:11px; height:11px; border-radius:50%; border:1px solid var(--steel-light); background:var(--paper); position:relative; z-index:1; transition:all .2s ease;}
+  .rail-stop.active{color:var(--ink);}
+  .rail-stop.active .rail-dot{background:var(--amber); border-color:var(--amber); box-shadow:0 0 0 4px rgba(242,169,0,0.18);}
 
-.message{
-    font-size:20px;
-    line-height:1.8;
-    margin-bottom:25px;
-}
+  /* ===== Hero ===== */
+  .hero{padding:88px 0 60px; overflow:hidden;}
+  .hero-grid{display:grid; grid-template-columns:1.15fr 0.85fr; gap:56px; align-items:center;}
+  @media(max-width:860px){.hero-grid{grid-template-columns:1fr;}}
+  .hero h1{font-size:clamp(42px,6.4vw,76px); margin-bottom:22px;}
+  .hero h1 em{font-style:normal; color:var(--blue-steel);}
+  .hero p.lead{font-size:18px; color:var(--steel); max-width:480px; margin-bottom:32px;}
+  .hero-actions{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:36px;}
+  .hero-stats{display:flex; gap:36px; font-family:var(--mono); flex-wrap:wrap;}
+  .hero-stats div strong{display:block; font-family:var(--display); font-size:30px; font-weight:700; color:var(--ink);}
+  .hero-stats div span{font-size:11px; color:var(--steel); letter-spacing:0.05em; text-transform:uppercase;}
 
-.bouquet{
-    font-size:55px;
-    margin:20px 0;
-    animation:float 3s infinite;
-}
+  .shaft-wrap{position:relative;}
+  .shaft-svg{width:100%; height:auto;}
+  #cab{transition:transform 3.2s cubic-bezier(.65,.05,.36,1);}
 
-button{
-    border:none;
-    background:#ff4d6d;
-    color:white;
-    padding:14px 30px;
-    border-radius:30px;
-    font-size:18px;
-    cursor:pointer;
-    transition:.3s;
-}
+  /* ===== Section shell ===== */
+  section{padding:96px 0;}
+  .section-head{max-width:620px; margin-bottom:56px;}
+  .section-head h2{font-size:clamp(32px,4.4vw,48px);}
+  .dark{background:var(--graphite); color:var(--paper);}
+  .dark .eyebrow{color:var(--amber);}
+  .dark .steel-text{color:var(--steel-light);}
 
-button:hover{
-    transform:scale(1.08);
-    background:#ff1744;
-}
+  /* ===== Services ===== */
+  .services-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+  @media(max-width:780px){.services-grid{grid-template-columns:1fr;}}
+  .service-card{background:var(--paper); padding:38px 32px; display:flex; flex-direction:column; gap:18px;}
+  .service-num{font-family:var(--mono); font-size:12px; color:var(--blue-steel);}
+  .service-card h3{font-size:24px; text-transform:none; letter-spacing:0;}
+  .service-card p{color:var(--steel); font-size:15px;}
+  .service-icon{width:40px; height:40px; color:var(--amber);}
 
-#love{
-    display:none;
-    margin-top:25px;
-    font-size:24px;
-    animation:fadeIn 2s;
-}
+  /* ===== Process (real sequence -> numbered) ===== */
+  .process-list{border-top:1px solid var(--steel);}
+  .process-item{
+    display:grid; grid-template-columns:90px 1fr 1fr; gap:24px; padding:30px 0;
+    border-bottom:1px solid rgba(238,241,242,0.15); align-items:baseline;
+  }
+  @media(max-width:720px){.process-item{grid-template-columns:60px 1fr; row-gap:8px;} .process-item .process-desc{grid-column:2;}}
+  .process-num{font-family:var(--mono); font-size:15px; color:var(--amber);}
+  .process-title{font-family:var(--display); font-size:24px; text-transform:uppercase; font-weight:700;}
+  .process-desc{color:var(--steel-light); font-size:15px; max-width:460px;}
 
-.flower{
-    position:absolute;
-    top:-50px;
-    font-size:28px;
-    animation:fall linear infinite;
-}
+  /* ===== Trust strip ===== */
+  .trust-strip{display:flex; flex-wrap:wrap; gap:0; border:1px solid var(--line); background:var(--paper-dim);}
+  .trust-item{flex:1 1 200px; padding:28px 26px; border-right:1px solid var(--line);}
+  .trust-item:last-child{border-right:none;}
+  .trust-item strong{display:block; font-family:var(--display); font-size:15px; text-transform:uppercase; margin-bottom:6px;}
+  .trust-item span{font-size:14px; color:var(--steel);}
 
-@keyframes float{
-    0%,100%{transform:translateY(0);}
-    50%{transform:translateY(-12px);}
-}
+  /* ===== Gallery ===== */
+  .gallery-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+  @media(max-width:780px){.gallery-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:480px){.gallery-grid{grid-template-columns:1fr;}}
+  .gallery-item{
+    aspect-ratio:4/5; background:repeating-linear-gradient(135deg, var(--paper-dim), var(--paper-dim) 10px, #dde2e3 10px, #dde2e3 20px);
+    border:1px dashed var(--steel-light); display:flex; align-items:flex-end; padding:16px;
+    font-family:var(--mono); font-size:12px; color:var(--steel); position:relative; overflow:hidden;
+  }
+  .gallery-item::before{content:'+'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:32px; color:var(--steel-light); font-family:var(--body);}
+  .gallery-item.filled{border-style:solid; border-color:var(--line); align-items:flex-end; padding:0;}
+  .gallery-item.filled::before{content:none;}
+  .gallery-item.filled img{width:100%; height:100%; object-fit:cover; position:absolute; inset:0; z-index:0;}
+  .gallery-item.filled .gallery-caption{
+    position:relative; z-index:1; width:100%; padding:14px 16px;
+    background:linear-gradient(to top, rgba(16,32,46,0.85), rgba(16,32,46,0));
+    color:#fff; font-family:var(--mono); font-size:12px; letter-spacing:0.03em;
+  }
 
-@keyframes fadeIn{
-    from{
-        opacity:0;
-        transform:translateY(20px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
+  /* ===== Contact ===== */
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:64px;}
+  @media(max-width:860px){.contact-grid{grid-template-columns:1fr; gap:48px;}}
+  .field{margin-bottom:20px;}
+  .field label{display:block; font-family:var(--mono); font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--blue-steel); margin-bottom:8px;}
+  .field input, .field textarea{
+    width:100%; border:1px solid var(--line); background:var(--paper); padding:13px 14px; font-family:var(--body); font-size:15px; border-radius:var(--radius);
+  }
+  .field textarea{resize:vertical; min-height:110px;}
+  .contact-info-list{list-style:none; display:flex; flex-direction:column; gap:22px; margin-top:8px;}
+  .contact-info-list li{display:flex; gap:16px; align-items:flex-start;}
+  .contact-info-list .ci-icon{width:20px; height:20px; flex-shrink:0; color:var(--amber); margin-top:2px;}
+  .contact-info-list strong{display:block; font-family:var(--display); font-size:15px; text-transform:uppercase;}
+  .contact-info-list span{color:var(--steel); font-size:14px;}
+  .hours-table{font-family:var(--mono); font-size:13px; margin-top:26px; border-top:1px solid var(--line); padding-top:18px;}
+  .hours-row{display:flex; justify-content:space-between; padding:4px 0; color:var(--steel);}
 
-@keyframes fall{
-    from{
-        transform:translateY(-10vh) rotate(0deg);
-    }
-    to{
-        transform:translateY(110vh) rotate(360deg);
-    }
-}
+  /* ===== Footer ===== */
+  footer{background:var(--ink); color:var(--steel-light); padding:44px 0 28px;}
+  .footer-row{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; font-size:13px;}
+  .footer-brand{font-family:var(--display); color:var(--paper); font-size:18px; text-transform:uppercase;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    #cab{transition:none;}
+    .rail-stop .rail-label{transition:none;}
+  }
 </style>
-
 </head>
 <body>
 
-<div class="card">
+<!-- ===================== FLOOR INDICATOR RAIL (signature element) ===================== -->
+<nav id="rail" aria-label="Page floor indicator">
+  <div class="rail-track">
+    <div class="rail-line"></div>
+    <a href="#top" class="rail-stop" data-target="top"><span class="rail-label">LOBBY — TOP</span><span class="rail-dot"></span></a>
+    <a href="#services" class="rail-stop" data-target="services"><span class="rail-label">1 — SERVICES</span><span class="rail-dot"></span></a>
+    <a href="#process" class="rail-stop" data-target="process"><span class="rail-label">2 — PROCESS</span><span class="rail-dot"></span></a>
+    <a href="#gallery" class="rail-stop" data-target="gallery"><span class="rail-label">3 — PROJECTS</span><span class="rail-dot"></span></a>
+    <a href="#contact" class="rail-stop" data-target="contact"><span class="rail-label">4 — CONTACT</span><span class="rail-dot"></span></a>
+  </div>
+</nav>
 
-<h1>🌸 Dear Motii 🌸</h1>
+<!-- ===================== HEADER ===================== -->
+<header id="top">
+  <div class="wrap nav-row">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 34 34" fill="none">
+        <rect x="1" y="1" width="32" height="32" stroke="#10202E" stroke-width="1.5"/>
+        <rect x="8" y="6" width="18" height="22" stroke="#10202E" stroke-width="1.5"/>
+        <path d="M14 12L17 9L20 12" stroke="#A9824F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M14 22L17 25L20 22" stroke="#A9824F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="brand-name">SHYONIX <span>ELEVATOR</span></div>
+    </div>
+    <nav class="links">
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#gallery">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <a class="phone-link" href="tel:+918979950220" title="Call +91 89799 50220 or +91 89239 50220">+91 89799 50220</a>
+      <a class="btn btn-primary" href="#contact">Get a Quote</a>
+    </div>
+  </div>
+</header>
 
-<div class="bouquet">
-💐🌹🌸🌷🌺
+<!-- ===================== HERO ===================== -->
+<div class="hero wrap">
+  <div class="hero-grid">
+    <div>
+      <div class="eyebrow">Licensed &amp; Certified Installers</div>
+      <h1>Elevators<br>fitted to <em>run true</em>,<br>floor after floor.</h1>
+      <p class="lead">Shyonix Elevator installs and fits new passenger and platform lifts for homes and buildings — engineered on-site, aligned to code, and handed over ready to certify.</p>
+      <div class="hero-actions">
+        <a class="btn btn-amber" href="#contact">Request a Site Visit</a>
+        <a class="btn btn-outline" href="tel:+918979950220">Call +91 89799 50220</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong>12+</strong><span>Years Fitting</span></div>
+        <div><strong>240+</strong><span>Elevators Installed</span></div>
+        <div><strong>100%</strong><span>Code-Compliant Handover</span></div>
+      </div>
+    </div>
+    <div class="shaft-wrap">
+      <svg class="shaft-svg" viewBox="0 0 320 420" fill="none">
+        <rect x="20" y="10" width="280" height="400" stroke="#55636D" stroke-width="1.5"/>
+        <line x1="20" y1="110" x2="300" y2="110" stroke="#D9DDE0" stroke-width="1"/>
+        <line x1="20" y1="210" x2="300" y2="210" stroke="#D9DDE0" stroke-width="1"/>
+        <line x1="20" y1="310" x2="300" y2="310" stroke="#D9DDE0" stroke-width="1"/>
+        <text x="30" y="100" font-family="JetBrains Mono" font-size="11" fill="#8D98A1">03</text>
+        <text x="30" y="200" font-family="JetBrains Mono" font-size="11" fill="#8D98A1">02</text>
+        <text x="30" y="300" font-family="JetBrains Mono" font-size="11" fill="#8D98A1">01</text>
+        <text x="30" y="400" font-family="JetBrains Mono" font-size="11" fill="#8D98A1">G</text>
+        <!-- rail -->
+        <line x1="60" y1="20" x2="60" y2="400" stroke="#D9DDE0" stroke-width="1"/>
+        <line x1="260" y1="20" x2="260" y2="400" stroke="#D9DDE0" stroke-width="1"/>
+        <!-- cab -->
+        <g id="cab">
+          <rect x="80" y="300" width="160" height="90" fill="#132A3D"/>
+          <line x1="160" y1="300" x2="160" y2="390" stroke="#A9824F" stroke-width="2"/>
+          <rect x="88" y="310" width="64" height="70" fill="none" stroke="#55636D" stroke-width="1"/>
+          <rect x="168" y="310" width="64" height="70" fill="none" stroke="#55636D" stroke-width="1"/>
+          <circle cx="160" cy="292" r="3" fill="#A9824F"/>
+        </g>
+        <!-- cable -->
+        <line x1="160" y1="10" x2="160" y2="300" stroke="#55636D" stroke-width="1" stroke-dasharray="2 4" id="cable"/>
+      </svg>
+    </div>
+  </div>
 </div>
 
-<div class="message">
-You are my <b>special person</b>. ❤️<br><br>
+<!-- ===================== SERVICES ===================== -->
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">What We Do</div>
+      <h2>Three ways we get you moving.</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 40 40" fill="none"><rect x="8" y="4" width="24" height="32" stroke="currentColor" stroke-width="1.6"/><path d="M16 14l4-4 4 4M16 26l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <div class="service-num">01 / NEW INSTALLATION</div>
+        <h3>Ground-up elevator installation</h3>
+        <p>Shaft assessment, machine selection, and full installation for new residential or commercial buildings — coordinated with your architect and site team.</p>
+      </div>
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 40 40" fill="none"><rect x="6" y="10" width="28" height="20" rx="1" stroke="currentColor" stroke-width="1.6"/><line x1="20" y1="10" x2="20" y2="30" stroke="currentColor" stroke-width="1.6"/></svg>
+        <div class="service-num">02 / CUSTOM FITTING</div>
+        <h3>Cab, door &amp; panel fit-out</h3>
+        <p>Interior fitting for cabs, doors, and control panels — matched to your building's finish, load requirements, and accessibility needs.</p>
+      </div>
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="14" stroke="currentColor" stroke-width="1.6"/><path d="M20 12v8l6 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <div class="service-num">03 / RETROFIT &amp; MODERNIZATION</div>
+        <h3>Upgrade an existing lift</h3>
+        <p>Replace ageing mechanicals or controls in an existing shaft without a full rebuild — minimising downtime for the building.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-You matter so much in my life.<br>
-Your smile makes my day brighter, and your presence makes everything feel better.<br><br>
+<!-- ===================== PROCESS ===================== -->
+<section id="process" class="dark">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">How A Project Runs</div>
+      <h2 style="color:var(--paper)">From site visit to sign-off.</h2>
+    </div>
+    <div class="process-list">
+      <div class="process-item">
+        <div class="process-num">01</div>
+        <div class="process-title">Site Survey</div>
+        <div class="process-desc steel-text">We assess the shaft, load requirements, and access points, and confirm what fits your building.</div>
+      </div>
+      <div class="process-item">
+        <div class="process-num">02</div>
+        <div class="process-title">Design &amp; Quote</div>
+        <div class="process-desc steel-text">You get a fixed quote and a spec sheet — cab size, speed, capacity, and timeline.</div>
+      </div>
+      <div class="process-item">
+        <div class="process-num">03</div>
+        <div class="process-title">Installation</div>
+        <div class="process-desc steel-text">Our certified crew installs rail, machine, cab, and controls on the agreed schedule.</div>
+      </div>
+      <div class="process-item">
+        <div class="process-num">04</div>
+        <div class="process-title">Testing</div>
+        <div class="process-desc steel-text">Full load, safety, and alignment testing before anyone steps inside.</div>
+      </div>
+      <div class="process-item">
+        <div class="process-num">05</div>
+        <div class="process-title">Certify &amp; Handover</div>
+        <div class="process-desc steel-text">Compliance certification filed, and the elevator is handed over ready to use.</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-Thank you for being you, Motii. 🌹
-</div>
+<!-- ===================== TRUST STRIP ===================== -->
+<section style="padding-top:64px; padding-bottom:64px;">
+  <div class="wrap">
+    <div class="trust-strip">
+      <div class="trust-item"><strong>Licensed Crew</strong><span>Certified installers on every job site</span></div>
+      <div class="trust-item"><strong>Code Compliant</strong><span>Every install filed and certified on handover</span></div>
+      <div class="trust-item"><strong>Fixed Quotes</strong><span>No surprise costs once work begins</span></div>
+      <div class="trust-item"><strong>Local Support</strong><span>Based in your service area, not a call centre</span></div>
+    </div>
+  </div>
+</section>
 
-<button onclick="showLove()">
-Open My Heart ❤️
-</button>
+<!-- ===================== GALLERY ===================== -->
+<section id="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Recent Work</div>
+      <h2>Projects on the ground.</h2>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item filled">
+        <img src="images/project-01.jpg" alt="Elevator shaft interior showing rail, cables and installed cab machinery">
+        <div class="gallery-caption">Shaft &amp; rail installation</div>
+      </div>
+      <div class="gallery-item filled">
+        <img src="images/project-02.jpg" alt="Technicians in safety helmets fitting elevator cab machinery inside the shaft">
+        <div class="gallery-caption">On-site fitting crew</div>
+      </div>
+      <div class="gallery-item">Photo 03 — swap in a project image</div>
+      <div class="gallery-item">Photo 04 — swap in a project image</div>
+      <div class="gallery-item">Photo 05 — swap in a project image</div>
+      <div class="gallery-item">Photo 06 — swap in a project image</div>
+    </div>
+  </div>
+</section>
 
-<div id="love">
-💖 You will always have a special place in my heart. 💖
-<br><br>
-🌹 I appreciate you more than words can express. 🌹
-</div>
+<!-- ===================== CONTACT ===================== -->
+<section id="contact" class="dark">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Get In Touch</div>
+      <h2 style="color:var(--paper)">Tell us about your building.</h2>
+    </div>
+    <div class="contact-grid">
+      <form onsubmit="event.preventDefault(); alert('Form submitted — connect this to your email or backend of choice.');">
+        <div class="field">
+          <label for="name">Full name</label>
+          <input id="name" type="text" required>
+        </div>
+        <div class="field">
+          <label for="phone">Phone number</label>
+          <input id="phone" type="tel" required>
+        </div>
+        <div class="field">
+          <label for="msg">Tell us about the building &amp; timeline</label>
+          <textarea id="msg" required></textarea>
+        </div>
+        <button class="btn btn-amber" type="submit">Send Request</button>
+      </form>
+      <div>
+        <ul class="contact-info-list">
+          <li>
+            <svg class="ci-icon" viewBox="0 0 24 24" fill="none" stroke="#A9824F" stroke-width="1.6"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L8.1 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.9 2Z"/></svg>
+            <div><strong>Call</strong><span>+91 89799 50220 &nbsp;/&nbsp; +91 89239 50220</span></div>
+          </li>
+          <li>
+            <svg class="ci-icon" viewBox="0 0 24 24" fill="none" stroke="#A9824F" stroke-width="1.6"><path d="M4 4h16v16H4z"/><path d="m4 4 8 9 8-9"/></svg>
+            <div><strong>Email</strong><span>hello@shyonixelevator.example</span></div>
+          </li>
+          <li>
+            <svg class="ci-icon" viewBox="0 0 24 24" fill="none" stroke="#A9824F" stroke-width="1.6"><path d="M12 22s7-6.1 7-12a7 7 0 1 0-14 0c0 5.9 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            <div><strong>Workshop / Office</strong><span>G-202 Parisa Complex, 29/1 D1 D2, Civil Line, Rudrapur, Udham Singh Nagar, Uttarakhand</span></div>
+          </li>
+          <li>
+            <svg class="ci-icon" viewBox="0 0 24 24" fill="none" stroke="#A9824F" stroke-width="1.6"><path d="M3 12h18M12 3v18" stroke-linecap="round"/></svg>
+            <div><strong>Service Area</strong><span>Rudrapur, Haldwani, Kashipur &amp; surrounding districts of Uttarakhand</span></div>
+          </li>
+        </ul>
+        <div class="hours-table">
+          <div class="hours-row"><span>MON — SAT</span><span>09:00 — 19:00</span></div>
+          <div class="hours-row"><span>SUNDAY</span><span>Emergency call-outs only</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-</div>
+<footer>
+  <div class="wrap footer-row">
+    <div class="footer-brand">SHYONIX ELEVATOR</div>
+    <div>© 2026 Shyonix Elevator. All rights reserved.</div>
+    <div>Replace placeholder text, phone, and photos before publishing.</div>
+  </div>
+</footer>
 
 <script>
-function showLove(){
-    document.getElementById("love").style.display="block";
-}
+  // Floor-indicator rail: scrollspy + cab animation on hero
+  const stops = document.querySelectorAll('.rail-stop');
+  const sections = Array.from(stops).map(s => document.getElementById(s.dataset.target));
 
-// Floating flowers
-const flowers=["🌸","🌹","🌺","🌷","💮"];
+  function updateRail(){
+    let current = sections[0];
+    sections.forEach(sec => {
+      if(sec && sec.getBoundingClientRect().top <= 140) current = sec;
+    });
+    stops.forEach(s => s.classList.toggle('active', s.dataset.target === current.id));
+  }
+  window.addEventListener('scroll', updateRail, {passive:true});
+  updateRail();
 
-for(let i=0;i<30;i++){
-    let flower=document.createElement("div");
-    flower.className="flower";
-    flower.innerHTML=flowers[Math.floor(Math.random()*flowers.length)];
-    flower.style.left=Math.random()*100+"vw";
-    flower.style.animationDuration=(5+Math.random()*5)+"s";
-    flower.style.animationDelay=Math.random()*5+"s";
-    document.body.appendChild(flower);
-}
+  // Gentle cab float animation (respects reduced motion)
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!prefersReduced){
+    const cab = document.getElementById('cab');
+    let up = true;
+    setInterval(() => {
+      cab.style.transform = up ? 'translateY(-230px)' : 'translateY(0)';
+      up = !up;
+    }, 3400);
+  }
 </script>
 
 </body>
 </html>
+
+
